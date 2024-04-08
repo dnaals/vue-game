@@ -68,6 +68,7 @@ export default {
     methods: {
         reStart(){
             this.computer_result=1;
+            this.isVictory=0;
         },
         start(){
             this.isVictory = 0;
