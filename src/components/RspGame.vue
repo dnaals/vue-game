@@ -13,10 +13,10 @@
             <div class="game_screen">
                 <div class="result">
                     <div class="computer">
-                        <!-- <img v-if="computer_result==1" src="/images/rsp.png" alt=""> -->
-                        <img v-if="computer_picture == 0" src="/images/rock.png" alt="">
-                        <img v-else-if="computer_picture == 1" src="/images/scissors.png" alt="">
-                        <img v-else-if="computer_picture == 2" src="/images/paper.png" alt="">
+                        <img v-if="isVictory==4" src="/images/rsp.png" alt="">
+                        <img v-else-if="isVictory!=4 && computer_picture == 0" src="/images/rock.png" alt="">
+                        <img v-else-if="isVictory!=4 && computer_picture == 1" src="/images/scissors.png" alt="">
+                        <img v-else-if="isVictory!=4 && computer_picture == 2" src="/images/paper.png" alt="">
                         <p>Computer</p>
                     </div>
                     <div class="player">
@@ -32,6 +32,7 @@
                     <p v-else-if="isVictory == 2">좀하시네요</p>
                     <p v-else-if="isVictory == 3">이걸지네 ㅋㅋ</p>
                     <p v-else-if="isVictory == 1">비겼습니다 다시!</p>
+                    <p v-else-if="isVictory == 4 " @click="start">시작</p>
                 </div>
                 <button v-if="computer_result!==1" @click="reStart">다시하기</button>
             </div>
@@ -57,8 +58,8 @@ export default {
             computer_result: 1,
             player_result: 1,
             computer_data: [0, 2, 5],
-            isVictory: 0,   //0시작 , 1비김, 2이김, 3짐,
-            computer_picture: 0
+            isVictory: 4,   //0선택 , 1비김, 2이김, 3짐, 4시작
+            computer_picture: 5
         }
     },
     mounted() {
@@ -68,6 +69,10 @@ export default {
         reStart(){
             this.computer_result=1;
         },
+        start(){
+            this.isVictory = 0;
+            this.computer_picture =0;
+        },
         incrementComputerPicture() {
             if(this.computer_result==1){
                 this.computer_picture++;
@@ -76,16 +81,21 @@ export default {
                     }
         } else if(this.computer_result==0){
             this.computer_picture = 0;
+            
         } else if(this.computer_result==2){
             this.computer_picture = 1;
+            
         }else if(this.computer_result==5){
             this.computer_picture = 2;
+            
         }
         }
         ,
         rockClick() {
             this.player_result = this.rock_data;
             this.computer_result = this.computer_data[Math.floor(Math.random() * this.computer_data.length)];
+            
+            
             if (this.computer_result == 0) {
                 this.isVictory = 1;
             } else if (this.computer_result == 2) {
@@ -144,7 +154,7 @@ export default {
     .homeBtn {
         position: absolute;
         top: 20px;
-        right: 0;
+        right: -80px;
     }
 
     .score {
