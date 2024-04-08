@@ -37,9 +37,9 @@
                 <button v-if="computer_result!==1" @click="reStart">다시하기</button>
             </div>
             <div class="game_play">
-                <img @click="rockClick" src="/images/rock.png" alt="">
-                <img @click="scissorsClick" src="/images/scissors.png" alt="">
-                <img @click="paperClick" src="/images/paper.png" alt="">
+                <img @click="rockClick" v-if="isVictory == 0" src="/images/rock.png" alt="">
+                <img @click="scissorsClick" v-if="isVictory == 0" src="/images/scissors.png" alt="">
+                <img @click="paperClick" v-if="isVictory == 0" src="/images/paper.png" alt="">
             </div>
         </div>
     </div>
@@ -176,7 +176,7 @@ export default {
 
         >div {
             display: flex;
-            gap: 30px;
+            gap: 80px;
         }
     }
 
