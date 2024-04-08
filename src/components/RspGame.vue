@@ -171,7 +171,7 @@ export default {
 
     .rsp_game {
         display: flex;
-        gap: 100px;
+        justify-content: space-between;
 
         .game_screen {
             width: 600px;
