@@ -38,7 +38,7 @@ export default {
             secondroom:20,
             isNum: 0,
             score:0,
-            time:2
+            time:60
         }
     },
     methods: {
