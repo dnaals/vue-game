@@ -38,7 +38,8 @@ export default {
             secondroom:20,
             isNum: 0,
             score:0,
-            time:60
+            time:60,
+            intervalId:null
         }
     },
     methods: {
@@ -57,12 +58,12 @@ export default {
                     card.reverse = false;
                 });
                 this.isStart = true;
-                const a = setInterval(()=>{
+                this.intervalId = setInterval(()=>{
                     --this.time;
                     if(this.time==0){
-                        alert("게임끝!")
+                        alert("시간초과!")
                         this.time=60;
-                        clearInterval(a);
+                        clearInterval(this.intervalId);
                         this.isStart=false;
                     }
                 },1000)
@@ -91,9 +92,11 @@ export default {
                             this.secondnum = 20;
                             ++this.score;
                             if(this.score==8){
-                                alert("끝");
+                                clearInterval(this.intervalId);
+                                alert("성공!");
                                 this.score=0;
                                 this.isStart=false;
+                                this.time=60;
                             }
                         } else if (this.firstnum != 20 && this.secondnum != 20 && this.firstidx !== this.secondidx) {
                             ++this.isNum;
