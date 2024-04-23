@@ -16,8 +16,7 @@
     </li>
   </ul>
 
-
-**배포링크 : <a href="https://vue-game-beryl.vercel.app/"</a>**
+**배포링크 : <a href="https://vue-game-beryl.vercel.app/" target="_blank">https://vue-game-beryl.vercel.app/</a>**
 
 ## 🌈 주요기능
 <ul>
